@@ -126,7 +126,7 @@
             {
                 "nombre": "Brisas de Chicá",
                 "descripcion": "⛰️ Una excelente opción para disfrutar de una escapada en familia o con amigos ubicada en Chicá de Chame y con capacidad para hasta 16 huéspedes.",
-                "enlace": "https://hospedatepanama.com/propiedades/domo-villa-en-la-montana-brisas-de-chica/"
+                "enlace": "https://hospedatepanama.com/propiedades/brisas-de-chica-panama-oeste-2/"
             },
             {
                 "nombre": "Frente al mar Playa Serena, Gorgona ph Bahia",
@@ -181,7 +181,7 @@
             {
                 "nombre": "Casa Nia",
                 "descripcion": "🏖️ Una excelente opción para disfrutar de una escapada en familia o con amigos ubicada en Punta Barco Viejo y con capacidad para hasta 14 huéspedes.",
-                "enlace": "https://hospedatepanama.com/propiedades/alojamiento-estilo-boutique-unico-en-punta-barco-casa-nia/"
+                "enlace": "https://hospedatepanama.com/propiedades/alojamiento-estilo-boutique-unico-en-punta-barco/"
             },
             {
                 "nombre": "Pika Cabins",
@@ -396,7 +396,7 @@
             {
                 "nombre": "Apto. Tropical PTY - Playa Caracol",
                 "descripcion": "🏖️ Una excelente opción para disfrutar de una escapada en familia o con amigos ubicada en Chame y con capacidad para hasta 4 huéspedes.",
-                "enlace": "https://hospedatepanama.com/propiedades/apto-playa-caracol-tropicalpty-chame/"
+                "enlace": "https://hospedatepanama.com/propiedades/apto-playa-caracol-tropicalpty/"
             },
             {
                 "nombre": "Bala Beach Resort",
@@ -445,7 +445,7 @@
             }
         ];
 
-        // Lista de propiedades "Premium" (Las que tienen el formato largo)
+        // Lista de propiedades "Premium"
         const propiedadesPremium = [
             "Brisas de Chicá",
             "Casa de Las Palmas",
@@ -465,12 +465,9 @@
         ];
 
         function generarTexto(propiedad) {
-            // Verificar si el nombre de la propiedad está en la lista Premium
             if (propiedadesPremium.includes(propiedad.nombre)) {
-                // Formato para propiedades Premium
-                return `👋 ¡Hola! Gracias por tu interés en ${propiedad.nombre} 🌴\n\n🗓️ ¿Ya tienes fecha y a tu grupo listo para vivir una escapada inolvidable?\n\nPara cotizar o reservar, solo ingresa al siguiente enlace, haz clic en el botón de WhatsApp y envía las fechas exactas y cuántas personas son:\n\n🔗 ${propiedad.enlace}\n\n🌐 ¿Aún no te has decidido? Puedes explorar entre las múltiples e increíbles opciones que tenemos en nuestra página web.\n\n¡Seguro encontrarás una que te encantará!`;
+                return `👋 ¡Hola! Gracias por tu interés en ${propiedad.nombre} 🌴\n\n🗓️ ¿Ya tienes fecha y a tu grupo listo para vivir una escapada inolvidable?\n\nPara cotizar o reservar, solo ingresa al siguiente enlace, haz clic en el botón de WhatsApp y envía las fechas exactas y cuántas personas son:\n\n🔗 ${propiedad.enlace}\n\n🌐 ¿Aún no te has decidido? Puedes explorar entre las múltiples opciones increíbles que tenemos en nuestra página web.\n\n¡Seguro encontrarás una que te encantará!`;
             } else {
-                // Formato para el resto de propiedades (Estándar)
                 return `👋 ¡Hola! Gracias por tu interés en ${propiedad.nombre}.\n\n🏡 En el siguiente anuncio encontrarás la información detallada de la propiedad y el enlace de contacto directo con el anfitrión para consultar disponibilidad y realizar tu reserva:\n\n🔗 ${propiedad.enlace}`;
             }
         }
