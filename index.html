@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Hospédate Panamá | Atención al Cliente</title>
-    <!-- NUEVO FAVICON: Casa + Laptop en color azul corporativo -->
+    <!-- Favicon corporativo -->
     <link rel="icon" type="image/svg+xml" href="https://api.iconify.design/fa6-solid/house-laptop.svg?color=%230056b3">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -115,9 +115,12 @@
         </div>
     </header>
 
-    <h2 class="section-title"><i class="fa-solid fa-bolt"></i> Mensajes Generales</h2>
-    <div class="container" id="mensajesGrid">
-        <!-- Los mensajes rápidos se cargan aquí -->
+    <!-- Contenedor dinámico que se ocultará al buscar -->
+    <div id="seccionMensajes">
+        <h2 class="section-title"><i class="fa-solid fa-bolt"></i> Mensajes Generales</h2>
+        <div class="container" id="mensajesGrid">
+            <!-- Los mensajes rápidos se cargan aquí -->
+        </div>
     </div>
 
     <h2 class="section-title"><i class="fa-solid fa-keys"></i> Propiedades</h2>
@@ -149,6 +152,14 @@
             {
                 titulo: "Derivar a WhatsApp Directo",
                 texto: "¡Hola! Para más información debe escribir a través de este link de Whatsapp:\n\nhttps://wa.link/b05uac"
+            },
+            {
+                titulo: "Explorar Opciones en la Web",
+                texto: "🌐 Si aún no has definido la fecha o cantidad de personas, puedes explorar entre las múltiples opciones increíbles que tenemos en nuestra página web.\n\n🔗 https://hospedatepanama.com\n\n¡Seguro encontrarás una que te encantará!"
+            },
+            {
+                titulo: "Contacto Anunciantes (Manuel)",
+                texto: "Hola. Gracias por su interés.\n\nLas consultas relacionadas con anuncios, planes publicitarios y otros servicios son atendidas directamente por Manuel Salvador, quien estará a cargo de brindarle toda la información y asesoría que necesite.\n\nLínea de atención a anunciantes: +507 6261-7934  \n\nhttps://wa.me/50762617934"
             }
         ];
 
@@ -255,9 +266,9 @@
 
         function generarTexto(propiedad) {
             if (propiedadesPremium.includes(propiedad.nombre)) {
-                return `👋 ¡Hola! Gracias por tu interés en ${propiedad.nombre} \n\n🗓️ ¿Ya tienes fecha y a tu grupo listo para vivir una escapada inolvidable?\n\nPara cotizar o reservar debes ingresar al siguiente anuncio, hacer clic en el botón de WhatsApp y enviar allí las fechas exactas y cuántas personas son:\n\n🔗 ${propiedad.enlace}\n\n🌐 Si aún no has definido la fecha o cantidad de personas, puedes explorar entre las múltiples opciones increíbles que tenemos en nuestra página web.\n\n¡Seguro encontrarás una que te encantará!`;
+                return `👋 ¡Hola! Gracias por tu interés en ${propiedad.nombre}\n\n🗓️ Si ya tienes fecha y a tu grupo listo para vivir una escapada inolvidable, debes ingresar al siguiente anuncio, hacer clic en el botón de WhatsApp y enviar allí las fechas exactas y cuántas personas son:\n\n🔗 ${propiedad.enlace}\n\n¡Clic al enlace o a la imagen!`;
             } else {
-                return `👋 ¡Hola! Gracias por tu interés en ${propiedad.nombre}.\n\n🏡 En el siguiente anuncio encontrarás la información detallada de la propiedad y el enlace de contacto directo con el anfitrión para consultar disponibilidad y realizar tu reserva:\n\n🔗 ${propiedad.enlace}`;
+                return `👋 ¡Hola! Gracias por tu interés en ${propiedad.nombre}.\n\n🏡 En el siguiente anuncio encontrarás la información detallada de la propiedad y el enlace de contacto directo con el anfitrión para consultar disponibilidad y realizar tu reserva:\n\n🔗 ${propiedad.enlace}\n\n¡Clic al enlace o a la imagen!`;
             }
         }
         
@@ -280,6 +291,15 @@
 
         function filtrarPropiedades() {
             const input = document.getElementById('searchInput').value;
+            const seccionMensajes = document.getElementById('seccionMensajes');
+
+            // Si el buscador está vacío, mostramos los mensajes generales. Si escribimos algo, los ocultamos.
+            if (input.trim() === "") {
+                seccionMensajes.style.display = "block";
+            } else {
+                seccionMensajes.style.display = "none";
+            }
+
             renderizarPropiedades(input);
         }
 
