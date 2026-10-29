@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Hospédate Panamá VIP</title>
+    <title>Dashboard Hospédate Panamá | Atención al Cliente</title>
     <!-- Favicon corporativo -->
     <link rel="icon" type="image/svg+xml" href="https://api.iconify.design/fa6-solid/house-laptop.svg?color=%230F172A">
-    <!-- Iconos y Tipografía Premium (Plus Jakarta Sans) -->
+    <!-- Iconos y Tipografía Premium -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,33 +14,22 @@
     
     <style>
         :root {
-            --bg-body: #F8FAFC;
+            /* Paleta High-End Minimalista */
+            --bg-body: #F3F4F6; /* Gris súper suave para que el blanco resalte */
             --surface: #FFFFFF;
-            --text-main: #0F172A;
-            --text-muted: #64748B;
-            --border-light: #E2E8F0;
+            --text-main: #111827; /* Casi negro, muy elegante */
+            --text-muted: #4B5563; /* Gris plomo para textos secundarios */
+            --border-light: #E5E7EB;
             
-            /* Colores de Acción */
-            --primary: #2563EB;
-            --primary-hover: #1D4ED8;
-            --primary-glow: rgba(37, 99, 235, 0.15);
-            --success: #10B981;
+            /* Acentos Corporativos */
+            --primary: #0F172A; /* Azul noche (Luxury) */
+            --primary-accent: #2563EB; /* Azul eléctrico para botones/hover */
+            --success: #059669;
             
-            /* Secciones Especiales */
-            --msg-bg: #F1F5F9;
-            --msg-border: #CBD5E1;
-            --msg-icon: #475569;
-            
-            --premium-bg: linear-gradient(145deg, #FFFAF0 0%, #FFF4D4 100%);
-            --premium-border: #FDE68A;
-            --premium-text: #B45309;
-            
-            /* Sombras Premium */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-            --radius-lg: 20px;
-            --radius-md: 12px;
+            /* Sombras Premium (Apple Style) */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            --shadow-hover: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.05);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
@@ -52,97 +41,95 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* HEADER GLASSMORPHISM */
+        /* HEADER ELEGANTE */
         header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 24px 20px;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            border-bottom: 1px solid var(--border-light);
             position: sticky;
             top: 0;
             z-index: 100;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 18px;
             align-items: center;
-            box-shadow: var(--shadow-sm);
         }
 
         h1 { 
-            font-size: 1.4rem; 
+            font-size: 1.5rem; 
             font-weight: 700;
-            color: var(--text-main); 
+            color: var(--primary); 
             text-align: center;
             letter-spacing: -0.02em;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        h1 i { color: var(--primary); }
+        h1 i { color: var(--primary-accent); }
 
-        /* SEARCH BAR HIGH-END */
+        /* SEARCH BAR */
         .search-bar { width: 100%; max-width: 650px; position: relative; }
         .search-bar input {
             width: 100%; 
-            padding: 16px 24px 16px 50px; 
-            border-radius: 100px;
-            border: 2px solid transparent; 
-            background: #F1F5F9;
+            padding: 16px 24px 16px 52px; 
+            border-radius: 12px;
+            border: 1px solid #D1D5DB; 
+            background: #F9FAFB;
             font-size: 1.05rem; 
             font-weight: 500;
             color: var(--text-main);
             outline: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
         }
-        .search-bar input::placeholder { color: #94A3B8; font-weight: 400; }
-        .search-bar input:hover { background: #E2E8F0; }
+        .search-bar input::placeholder { color: #9CA3AF; font-weight: 400; }
+        .search-bar input:hover { background: var(--surface); border-color: #9CA3AF; }
         .search-bar input:focus { 
             background: var(--surface);
-            border-color: var(--primary); 
-            box-shadow: 0 0 0 4px var(--primary-glow); 
+            border-color: var(--primary-accent); 
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); 
         }
         .search-bar i { 
-            position: absolute; left: 22px; top: 18px; 
-            color: #94A3B8; font-size: 1.1rem;
-            transition: color 0.3s ease;
+            position: absolute; left: 20px; top: 18px; 
+            color: #9CA3AF; font-size: 1.1rem;
+            transition: color 0.2s ease;
         }
-        .search-bar input:focus + i { color: var(--primary); } /* Cambio de color al enfocar */
+        .search-bar input:focus + i { color: var(--primary-accent); }
 
-        /* TITULOS DE SECCIÓN */
+        /* TÍTULOS DE SECCIÓN */
         .section-title {
             max-width: 1200px; margin: 40px auto 20px; padding: 0 20px;
-            font-size: 1.1rem; font-weight: 700; color: var(--text-main);
+            font-size: 1.05rem; font-weight: 700; color: var(--text-muted);
             display: flex; align-items: center; gap: 10px;
             text-transform: uppercase; letter-spacing: 0.05em;
         }
-        .section-title i { opacity: 0.8; }
 
-        /* GRID Y TARJETAS (CARDS) */
+        /* GRID */
         .container {
-            max-width: 1200px; margin: 0 auto 10px; padding: 0 20px;
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px;
+            max-width: 1200px; margin: 0 auto 20px; padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px;
         }
 
+        /* TARJETAS BASE */
         .card {
             background: var(--surface); 
-            border-radius: var(--radius-lg); 
+            border-radius: 12px; 
             padding: 24px;
             border: 1px solid var(--border-light); 
             cursor: pointer;
             box-shadow: var(--shadow-sm);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex; flex-direction: column; gap: 12px;
+            transition: all 0.2s ease;
+            display: flex; flex-direction: column; gap: 8px;
             position: relative;
-            overflow: hidden;
         }
         .card:hover { 
-            transform: translateY(-4px); 
+            transform: translateY(-3px); 
             box-shadow: var(--shadow-hover); 
-            border-color: #CBD5E1;
+            border-color: #D1D5DB;
         }
-        
         .card h3 { 
             color: var(--text-main); 
             font-size: 1.15rem; 
@@ -156,78 +143,78 @@
             display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; 
         }
 
-        /* CARD: Mensajes Rápidos */
+        /* DISEÑO ESPECÍFICO: Mensajes Generales */
         .card.msg-card {
-            background: var(--msg-bg);
-            border-color: var(--msg-border);
+            background: #F8FAFC;
+            border: none;
+            border-left: 4px solid #94A3B8;
+            box-shadow: none;
         }
-        .card.msg-card h3 { color: var(--msg-icon); font-size: 1.05rem;}
-        
-        /* CARD: Premium */
-        .card.premium-card {
-            background: var(--premium-bg);
-            border-color: var(--premium-border);
-        }
-        .card.premium-card:hover { border-color: #FBBF24; }
-        .card.premium-card h3 { color: var(--premium-text); }
-        
-        /* Icono flotante al hacer hover */
-        .card::after {
-            content: '\f0c5'; /* Icono de copiar de FontAwesome */
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            bottom: 24px;
-            right: 24px;
-            color: var(--primary);
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.3s ease;
-        }
-        .card:hover::after {
-            opacity: 1;
-            transform: scale(1);
-        }
+        .card.msg-card:hover { background: #F1F5F9; border-left-color: var(--primary-accent); }
+        .card.msg-card h3 { color: #334155; font-size: 1.05rem;}
 
-        /* MODAL (UX Premium) */
+        /* DISEÑO ESPECÍFICO: Propiedades Destacadas (Premium) */
+        .card.premium-card {
+            background: var(--surface);
+            border: 1px solid #BFDBFE; /* Borde azul muy suave */
+            border-top: 4px solid var(--primary-accent); /* Acento principal arriba */
+            box-shadow: 0 4px 15px -3px rgba(37, 99, 235, 0.08); /* Sombra azulada sutil */
+        }
+        .card.premium-card:hover { 
+            border-color: #93C5FD; 
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.15); 
+        }
+        .card.premium-card h3 { color: var(--primary); }
+
+        /* Icono flotante (Copy) al hacer hover */
+        .card::after {
+            content: '\f0c5'; 
+            font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; bottom: 24px; right: 24px;
+            color: var(--primary-accent);
+            opacity: 0; transform: scale(0.8); transition: all 0.2s ease;
+        }
+        .card:hover::after { opacity: 1; transform: scale(1); }
+
+        /* MODAL */
         .modal-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.6); 
-            backdrop-filter: blur(8px);
+            background: rgba(17, 24, 39, 0.7); 
+            backdrop-filter: blur(4px);
             display: none; justify-content: center; align-items: center;
             z-index: 1000; padding: 20px;
-            opacity: 0; transition: opacity 0.3s ease;
+            opacity: 0; transition: opacity 0.2s ease;
         }
         .modal-overlay.active { opacity: 1; }
 
         .modal {
             background: var(--surface); 
             width: 100%; max-width: 550px; 
-            border-radius: 24px;
+            border-radius: 16px;
             padding: 32px; 
             position: relative; 
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             transform: translateY(20px) scale(0.95);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.2s ease;
         }
         .modal-overlay.active .modal { transform: translateY(0) scale(1); }
 
-        .modal h2 { font-size: 1.3rem; color: var(--text-main); margin-bottom: 20px; }
+        .modal h2 { font-size: 1.3rem; color: var(--primary); margin-bottom: 20px; font-weight: 700; }
 
         .close-btn { 
-            position: absolute; top: 24px; right: 24px; 
-            background: #F1F5F9; border: none; 
-            width: 36px; height: 36px; border-radius: 50%;
+            position: absolute; top: 20px; right: 20px; 
+            background: transparent; border: none; 
+            width: 32px; height: 32px; border-radius: 8px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; cursor: pointer; color: var(--text-muted); 
+            font-size: 1.2rem; cursor: pointer; color: #9CA3AF; 
             transition: all 0.2s;
         }
-        .close-btn:hover { background: #E2E8F0; color: #EF4444; }
+        .close-btn:hover { background: #F3F4F6; color: #111827; }
         
         .preview-box {
-            background: #F8FAFC; 
-            border-radius: var(--radius-md); 
-            padding: 24px; 
+            background: #F9FAFB; 
+            border-radius: 8px; 
+            padding: 20px; 
             margin-bottom: 24px;
             white-space: pre-wrap; 
             font-size: 0.95rem; 
@@ -235,66 +222,57 @@
             border: 1px solid var(--border-light);
             max-height: 45vh; 
             overflow-y: auto;
-            color: #334155;
-            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+            color: #374151;
         }
         
-        /* Scrollbar estilizado para la preview */
-        .preview-box::-webkit-scrollbar { width: 8px; }
+        .preview-box::-webkit-scrollbar { width: 6px; }
         .preview-box::-webkit-scrollbar-track { background: transparent; }
-        .preview-box::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
-        .preview-box::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+        .preview-box::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 10px; }
 
         .btn-copy {
-            width: 100%; padding: 16px; 
-            border-radius: var(--radius-md); border: none;
-            background: linear-gradient(135deg, var(--primary) 0%, #3B82F6 100%); 
-            color: white; font-size: 1.1rem; font-weight: 600;
+            width: 100%; padding: 14px; 
+            border-radius: 8px; border: none;
+            background: var(--primary-accent); 
+            color: white; font-size: 1.05rem; font-weight: 600;
             cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;
-            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
             transition: all 0.2s;
         }
-        .btn-copy:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
-        .btn-copy:active { transform: translateY(0); }
-        .btn-copy.success { background: linear-gradient(135deg, var(--success) 0%, #059669 100%); box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.39); }
+        .btn-copy:hover { background: #1D4ED8; box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.3); }
+        .btn-copy:active { transform: translateY(1px); }
+        .btn-copy.success { background: var(--success); box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.2); }
 
     </style>
 </head>
 <body>
 
     <header>
-        <h1><i class="fa-solid fa-house-laptop"></i> Hospédate Panamá VIP</h1>
+        <h1><i class="fa-solid fa-house-laptop"></i> Hospédate Panamá</h1>
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Buscar propiedad o mensaje (ej. Casa Carey)..." onkeyup="filtrarPropiedades()">
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
     </header>
 
-    <!-- SECCIÓN 1: Mensajes Rápidos VIP -->
+    <!-- SECCIÓN 1: Mensajes Rápidos -->
     <div id="seccionMensajes">
-        <h2 class="section-title" style="color: #475569;"><i class="fa-solid fa-bolt"></i> Respuestas Rápidas</h2>
-        <div class="container" id="mensajesGrid">
-            <!-- Los mensajes rápidos se cargan aquí -->
-        </div>
+        <h2 class="section-title"><i class="fa-regular fa-message"></i> Mensajes Generales</h2>
+        <div class="container" id="mensajesGrid"></div>
     </div>
 
-    <!-- SECCIÓN 2: Propiedades Premium (Prioridad) -->
+    <!-- SECCIÓN 2: Propiedades Destacadas -->
     <div id="seccionPremium">
-        <h2 class="section-title" style="color: #B45309;"><i class="fa-solid fa-star"></i> Colección Premium</h2>
-        <div class="container" id="premiumGrid">
-            <!-- Las propiedades Premium se cargarán aquí -->
-        </div>
+        <h2 class="section-title"><i class="fa-regular fa-star"></i> Propiedades Destacadas</h2>
+        <div class="container" id="premiumGrid"></div>
     </div>
 
     <!-- SECCIÓN 3: Resto de Propiedades -->
     <div id="seccionStandard">
-        <h2 class="section-title" style="color: #64748B;"><i class="fa-solid fa-building"></i> Portafolio General</h2>
-        <div class="container" id="standardGrid">
-            <!-- Las propiedades estándar se cargarán aquí -->
-        </div>
+        <h2 class="section-title"><i class="fa-regular fa-building"></i> Portafolio General</h2>
+        <div class="container" id="standardGrid"></div>
     </div>
 
-    <!-- Modal (Pop-up) -->
+    <!-- Modal -->
     <div class="modal-overlay" id="modal">
         <div class="modal">
             <button class="close-btn" onclick="cerrarModal()"><i class="fa-solid fa-xmark"></i></button>
@@ -398,7 +376,7 @@
             { "nombre": "Apartamento de playa en Gorgona - PH Bahia", "descripcion": "🏖️ Una excelente opción para disfrutar de una escapada en familia o con amigos ubicada en Gorgona y con capacidad para hasta 5 huéspedes.", "enlace": "https://hospedatepanama.com/propiedades/apartamento-de-playa-en-gorgona-ph-bahia/" }
         ];
 
-        const propiedadesPremium = [
+        const propiedadesDestacadas = [
             "Brisas de Chicá",
             "Casa de Las Palmas",
             "MoMa Malibu, Beach Front",
@@ -432,7 +410,7 @@
         }
 
         function generarTexto(propiedad) {
-            if (propiedadesPremium.includes(propiedad.nombre)) {
+            if (propiedadesDestacadas.includes(propiedad.nombre)) {
                 return `👋 ¡Hola! Gracias por tu interés en ${propiedad.nombre}\n\n🗓️ Si ya tienes fecha y a tu grupo listo para vivir una escapada inolvidable, debes ingresar al siguiente anuncio, hacer clic en el botón de WhatsApp y enviar allí las fechas exactas y cuántas personas son:\n\n🔗 ${propiedad.enlace}\n\n¡Clic al enlace o a la imagen!`;
             } else {
                 return `👋 ¡Hola! Gracias por tu interés en ${propiedad.nombre}.\n\n🏡 En el siguiente anuncio encontrarás la información detallada de la propiedad y el enlace de contacto directo con el anfitrión para consultar disponibilidad y realizar tu reserva:\n\n🔗 ${propiedad.enlace}\n\n¡Clic al enlace o a la imagen!`;
@@ -456,7 +434,7 @@
             filtradas.forEach((prop) => {
                 const card = document.createElement('div');
                 
-                if (propiedadesPremium.includes(prop.nombre)) {
+                if (propiedadesDestacadas.includes(prop.nombre)) {
                     card.className = 'card premium-card';
                     card.innerHTML = `
                         <h3>${prop.nombre}</h3>
@@ -505,13 +483,12 @@
             btnCopiar.classList.remove('success');
             
             modalOverlay.style.display = 'flex';
-            // Pequeño timeout para que la transición CSS surta efecto
             setTimeout(() => { modalOverlay.classList.add('active'); }, 10);
         }
 
         function cerrarModal() {
             modalOverlay.classList.remove('active');
-            setTimeout(() => { modalOverlay.style.display = 'none'; }, 300); // Esperar que termine la animación
+            setTimeout(() => { modalOverlay.style.display = 'none'; }, 200); 
         }
 
         function copiarAlPortapapeles() {
@@ -525,14 +502,12 @@
             });
         }
 
-        // Cierra el modal si haces clic fuera de la tarjeta blanca
         modalOverlay.addEventListener('click', function(event) {
             if (event.target === modalOverlay) {
                 cerrarModal();
             }
         });
 
-        // Inicializar
         renderizarMensajesRapidos();
         renderizarPropiedades();
     </script>
