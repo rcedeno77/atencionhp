@@ -18,6 +18,8 @@
             --border: #e1e8ed;
             --success: #28a745;
             --highlight: #f0f9ff;
+            --premium: #fff9e6; /* Fondo sutil para destacar las premium */
+            --premium-border: #fce8a1;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
@@ -74,6 +76,16 @@
         }
         .card.highlight h3 { color: var(--secondary); font-size: 1.1rem; }
 
+        /* Estilo especial para las tarjetas Premium */
+        .card.premium-card {
+            background: var(--premium);
+            border-color: var(--premium-border);
+        }
+        .card.premium-card:hover {
+            border-color: #f5c71a;
+        }
+        .card.premium-card h3 { color: #d4a000; }
+
         .modal-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center;
@@ -115,7 +127,7 @@
         </div>
     </header>
 
-    <!-- Contenedor dinámico que se ocultará al buscar -->
+    <!-- SECCIÓN 1: Mensajes Rápidos VIP -->
     <div id="seccionMensajes">
         <h2 class="section-title"><i class="fa-solid fa-bolt"></i> Mensajes Generales</h2>
         <div class="container" id="mensajesGrid">
@@ -123,11 +135,23 @@
         </div>
     </div>
 
-    <h2 class="section-title"><i class="fa-solid fa-keys"></i> Propiedades</h2>
-    <div class="container" id="propiedadesGrid">
-        <!-- Las propiedades se cargarán aquí -->
+    <!-- SECCIÓN 2: Propiedades Premium (Prioridad) -->
+    <div id="seccionPremium">
+        <h2 class="section-title" style="color: #d4a000;"><i class="fa-solid fa-star"></i> Propiedades Premium (Más consultadas)</h2>
+        <div class="container" id="premiumGrid">
+            <!-- Las propiedades Premium se cargarán aquí -->
+        </div>
     </div>
 
+    <!-- SECCIÓN 3: Resto de Propiedades -->
+    <div id="seccionStandard">
+        <h2 class="section-title"><i class="fa-solid fa-building"></i> Otras Propiedades</h2>
+        <div class="container" id="standardGrid">
+            <!-- Las propiedades estándar se cargarán aquí -->
+        </div>
+    </div>
+
+    <!-- Modal para ver y copiar -->
     <div class="modal-overlay" id="modal">
         <div class="modal">
             <button class="close-btn" onclick="cerrarModal()"><i class="fa-solid fa-xmark"></i></button>
@@ -150,7 +174,7 @@
                 texto: "Hola👋 , es un gusto tenerte aquí en @hospedatepanama.\n\n¿Buscas una propiedad para tu reunión familiar o de amigos?\n\nSigue estos pasos:  \n\n▪️ Ingresa a http://www.hospedatepanama.com\n\n▪️ Filtra tu búsqueda por nombre, ubicación, cantidad de habitaciones o presupuesto\n\n▪️ Contacta directamente al anfitrión para completar tu reserva. 🏖️⛰️"
             },
             {
-                titulo: "Derivar a WhatsApp Directo",
+                titulo: "Whatsapp de Casa Mezcal",
                 texto: "¡Hola! Para más información debe escribir a través de este link de Whatsapp:\n\nhttps://wa.link/b05uac"
             },
             {
@@ -273,27 +297,55 @@
         }
         
         function renderizarPropiedades(filtro = "") {
-            const grid = document.getElementById('propiedadesGrid');
-            grid.innerHTML = "";
+            const premiumGrid = document.getElementById('premiumGrid');
+            const standardGrid = document.getElementById('standardGrid');
+            const seccionPremium = document.getElementById('seccionPremium');
+            const seccionStandard = document.getElementById('seccionStandard');
+
+            // Limpiamos ambas cuadrículas antes de inyectar las nuevas
+            premiumGrid.innerHTML = "";
+            standardGrid.innerHTML = "";
+
             const filtradas = propiedades.filter(p => p.nombre.toLowerCase().includes(filtro.toLowerCase()));
             
-            filtradas.forEach((prop, index) => {
+            let premiumCount = 0;
+            let standardCount = 0;
+
+            filtradas.forEach((prop) => {
                 const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <h3>${prop.nombre}</h3>
-                    <p>${prop.descripcion}</p>
-                `;
-                card.onclick = () => abrirModalTextoDirecto(generarTexto(prop));
-                grid.appendChild(card);
+                
+                // Determinamos a qué contenedor va y le aplicamos estilo especial si es premium
+                if (propiedadesPremium.includes(prop.nombre)) {
+                    card.className = 'card premium-card';
+                    card.innerHTML = `
+                        <h3>${prop.nombre}</h3>
+                        <p>${prop.descripcion}</p>
+                    `;
+                    card.onclick = () => abrirModalTextoDirecto(generarTexto(prop));
+                    premiumGrid.appendChild(card);
+                    premiumCount++;
+                } else {
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <h3>${prop.nombre}</h3>
+                        <p>${prop.descripcion}</p>
+                    `;
+                    card.onclick = () => abrirModalTextoDirecto(generarTexto(prop));
+                    standardGrid.appendChild(card);
+                    standardCount++;
+                }
             });
+
+            // Ocultamos las secciones si la búsqueda las deja vacías
+            seccionPremium.style.display = premiumCount > 0 ? "block" : "none";
+            seccionStandard.style.display = standardCount > 0 ? "block" : "none";
         }
 
         function filtrarPropiedades() {
             const input = document.getElementById('searchInput').value;
             const seccionMensajes = document.getElementById('seccionMensajes');
 
-            // Si el buscador está vacío, mostramos los mensajes generales. Si escribimos algo, los ocultamos.
+            // Oculta mensajes generales al escribir
             if (input.trim() === "") {
                 seccionMensajes.style.display = "block";
             } else {
@@ -331,6 +383,7 @@
             });
         }
 
+        // Ejecutar funciones al iniciar
         renderizarMensajesRapidos();
         renderizarPropiedades();
     </script>
